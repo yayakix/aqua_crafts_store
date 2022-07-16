@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { Fragment, useContext } from "react";
-import { ReactComponent as Crownlogo } from "../crown.svg";
+import { ReactComponent as Aqualogo } from "../assets/aquavector.svg";
 import "../css/navbar.scss";
 
 import { UserContext } from "../context/usercontex";
@@ -21,7 +21,7 @@ function NavBar() {
     <Fragment>
       <div className="navigation">
         <Link className="logo-container" to="/">
-          <Crownlogo className="logo" />
+          <Aqualogo className="aqualogo" />
         </Link>
         <div className="navlinkscontainer">
           <Link className="nav-link" to="/shop">
@@ -38,7 +38,7 @@ function NavBar() {
           )}
           <CartIcon />
         </div>
-        {isCartOpen && <CartDropdown/>}
+        {isCartOpen && <CartDropdown />}
       </div>
 
       <Outlet />

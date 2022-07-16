@@ -1,5 +1,5 @@
 .navigation {
-  height: 70px;
+  height: 90px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -8,8 +8,8 @@
 
   .logo-container {
     height: 100%;
-    width: 70px;
-    padding: 25px;
+    width: 90px;
+    // padding: 20px;
   }
 
   .navlinkscontainer {
@@ -24,4 +24,8 @@
       cursor: pointer;
     }
   }
+}
+.aqualogo{
+  height: 90px;
+  width: 90px;
 }
