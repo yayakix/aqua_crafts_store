@@ -5,10 +5,11 @@ import ProductCard from "./productcard";
 import '../../css/section.styles.scss'
 
 const Section = () => {
-const {category} = useParams();
-const {products} = useContext(ProductsContext);
+const { category } = useParams();
+const { products } = useContext(ProductsContext);
 
-const [product, setProduct] =  useState([products[category]])
+const [product, setProduct] =  useState(products[category])
+
 useEffect(() => {
     setProduct(products[category])
 
