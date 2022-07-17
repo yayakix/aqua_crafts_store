@@ -1,22 +1,20 @@
 import { createContext, useState, useEffect } from "react";
-import SHOP_DATA from '../shopdata.js';
-import { addCollectionAndDocuments, getCategoriesAndDocuments } from "../firebase/firebase.js";
+import {  getCategoriesAndDocuments } from "../firebase/firebase.js";
+
 
 export const ProductsContext = createContext({
-    products: [],
+    products: {},
 });
 
 export const ProductsProvider = ({children}) => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState({});
 
 
 
 
   useEffect (() => {
       const getCategoriesMap =  async () => {
-        //   const categoryMap = await getCategoriesAndDocuments();
-let categoryMap = await SHOP_DATA
-          // console.log(categoryMap) contains object of firestore data
+          const categoryMap = await getCategoriesAndDocuments();
           setProducts(categoryMap)
       }
       getCategoriesMap();

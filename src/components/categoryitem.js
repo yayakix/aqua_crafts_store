@@ -3,12 +3,12 @@
 
 function CategoryCard(props) {
   return (
-      <div className="singlecategorybox">
+      <div className="directory-item-container">
         <div
           className="backgroundimg"
           style={{ backgroundImage: `url(${props.imageUrl})` }}
         />
-        <div className="categorybody">
+        <div className="directory-item-bodu">
           <h2>{props.title}</h2>
           <p>Shop now</p>
         </div>

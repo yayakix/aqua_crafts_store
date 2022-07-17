@@ -1,7 +1,12 @@
 import { Link, Outlet } from "react-router-dom";
 import { Fragment, useContext } from "react";
 import { ReactComponent as Aqualogo } from "../assets/aquavector.svg";
-import "../css/navbar.scss";
+
+import {
+  NavigationContainer,
+  LogoContainer,
+  NavLinksContainer,
+NavLink} from "../css/navbar.styles.jsx";
 
 import { UserContext } from "../context/usercontex";
 import { CartContext } from "../context/cartcontext";
@@ -19,27 +24,27 @@ function NavBar() {
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <Aqualogo className="aqualogo" />
-        </Link>
-        <div className="navlinkscontainer">
-          <Link className="nav-link" to="/shop">
+        </LogoContainer>
+        <NavLinksContainer>
+          <NavLink  to="/shop">
             SHOP
-          </Link>
+          </NavLink>
           {currUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <span  onClick={signOutUser}>
               SIGN OUT
             </span>
           ) : (
-            <Link className="nav-link" to="/signin">
+            <NavLink to="/signin">
               SIGN IN
-            </Link>
+            </NavLink>
           )}
           <CartIcon />
-        </div>
+        </NavLinksContainer>
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
 
       <Outlet />
     </Fragment>

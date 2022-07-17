@@ -1,37 +1,15 @@
-import { useContext,Fragment } from "react";
-import { ProductsContext } from "../../context/productcontext";
-import ProductCard from "./productcard";
 import "../../css/shop.styles.scss";
+import { Routes, Route } from "react-router-dom";
+import PreviewSections from "./previewsections";
+import Section from "./section";
 
 const Shop = () => {
-  const { products } = useContext(ProductsContext);
-console.log(products)
+
   return (
-    <Fragment>
-    {/* wait 24 hr for firebase */}
-      {Object.keys(products).map((title) => (
-        <Fragment key={title}>
-          <h2>{title}</h2>
-          <div className="products-container">
-            {products[title].map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </Fragment>
-      ))}
-
-
-      {/* {Object.keys(products).map((title) => (
-        <Fragment key={title}>
-          <h2>{title}</h2>
-          <div className="products-container">
-            {products[title].map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </Fragment>
-      ))} */}
-    </Fragment>
+    <Routes>
+      <Route index element={<PreviewSections />} />
+      <Route path=":category" element={<Section />} />
+    </Routes>
   );
 };
 export default Shop;
