@@ -28,18 +28,16 @@ function NavBar() {
         <LogoContainer to="/">
           <Aqualogo className="aqualogo" />
         </LogoContainer>
+
         <NavLinksContainer>
-          <NavLink  to="/shop">
-            SHOP
-          </NavLink>
+          <NavLink to="/shop">SHOP</NavLink>
+
           {currUser ? (
-            <span  onClick={signOutUser}>
+            <NavLink as="span" onClick={signOutUser}>
               SIGN OUT
-            </span>
-          ) : (
-            <NavLink to="/signin">
-              SIGN IN
             </NavLink>
+          ) : (
+            <NavLink to="/signin">SIGN IN</NavLink>
           )}
           <CartIcon />
         </NavLinksContainer>

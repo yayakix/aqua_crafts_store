@@ -1,4 +1,4 @@
-import "../../css/dropdown.styles.scss";
+import {CartDropContainer, CartItems, EmptyMessage} from "../../css/dropdown.styles.jsx";
 import Button from "../button";
 import CartItem from "./cart-item";
 import { useContext } from "react";
@@ -15,14 +15,18 @@ const CartDropdown = () => {
 
 
   return (
-    <div className="cart-dropdown-container">
-      <div className="cart-items">
-        {cartItems.map((item) => (
-          <CartItem key={item.id} cartItem={item} />
-        ))}
-      </div>
-      <Button buttonType="inverted" onClick={goToCheckoutFunc}>Checkout</Button>
-    </div>
+    <CartDropContainer>
+      <CartItems >
+        {cartItems.length ? (
+          cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
+        ) : (
+          <EmptyMessage>Your cart is empty</EmptyMessage>
+        )}
+      </CartItems>
+      <Button buttonType="inverted" onClick={goToCheckoutFunc}>
+        Checkout
+      </Button>
+    </CartDropContainer>
   );
 };
 export default CartDropdown;

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ProductPreview = ({ title, products }) => {
   return (
-    <div className="category-container">
+    <div className="category-preview-container">
       <h2>
         <Link className="title" to={title}>{title.toUpperCase}</Link>
       </h2>

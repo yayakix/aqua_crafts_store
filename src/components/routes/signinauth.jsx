@@ -66,14 +66,16 @@ const SignInForm = () => {
           type="password"
           onChange={handleChange}
           name="password"
-          minlength="8"
+          minLength="8"
           value={password}
         />
         <div className="buttons-container">
-          <Button type="submit" buttonType="">
-            Sign In
-          </Button>
-          <Button onClick={signInWithGoogle} type="button" buttonType="google">
+          <Button type="submit">Sign In</Button>
+          <Button
+            buttonType='google'
+            onClick={signInWithGoogle}
+            type="button"
+          >
             Google signIn
           </Button>
         </div>
