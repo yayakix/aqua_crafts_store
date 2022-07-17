@@ -1,29 +1,33 @@
 const category = [
   {
     id: 1,
-    title: "hats",
-    imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+    title: "All",
+    imageUrl:
+      "https://i.etsystatic.com/32975082/r/il/0b16db/3984143162/il_794xN.3984143162_jzlv.jpg",
   },
   {
     id: 2,
-    title: "jackets",
-    imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+    title: "Aqua Bijoux",
+    imageUrl:
+      "https://i.etsystatic.com/32975082/r/il/3bfcf9/4031808127/il_794xN.4031808127_6puv.jpg",
   },
   {
     id: 3,
-    title: "sneakers",
-    imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+    title: "Waist beads",
+    imageUrl:
+      "https://i.etsystatic.com/32975082/r/il/e55594/4002682960/il_794xN.4002682960_l15e.jpg",
   },
   {
     id: 4,
-    title: "womens",
-    imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
+    title: "Custom T-shirts",
+    imageUrl:
+      "https://i.etsystatic.com/32975082/r/il/058577/3620912809/il_794xN.3620912809_c7mr.jpg",
   },
   {
     id: 5,
-    title: "plants",
+    title: "Black Excellence",
     imageUrl:
-      "https://images.pexels.com/photos/213727/pexels-photo-213727.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "https://i.etsystatic.com/32975082/r/il/641ff4/3722983056/il_794xN.3722983056_89cu.jpg",
   },
 ];
 export default category
