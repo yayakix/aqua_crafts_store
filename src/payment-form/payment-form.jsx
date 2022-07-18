@@ -18,6 +18,9 @@ const PaymentForm = () => {
   const { currUser } = useContext(UserContext);
   console.log(currUser)
 
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  
+
 
 
   const stripe = useStripe();
@@ -29,6 +32,7 @@ const PaymentForm = () => {
     if (!stripe || !elements) {
       return;
     }
+    setPaymentLoading(true)
 
     const response = await fetch("/.netlify/functions/create-payment-intent", {
       method: "post",
@@ -49,6 +53,9 @@ const PaymentForm = () => {
         },
       },
     });
+
+    setPaymentLoading(false)
+
     if (paymentResult.error) {
       alert(paymentResult.error);
     } else {
@@ -61,8 +68,10 @@ const PaymentForm = () => {
     <PaymentFormContainer>
       <FormContainer onSubmit={paymentHandler}>
         <h2> Credit Card Payment</h2>
-        <CardElement />
+        <CardElement className="paymentcardelement" />
+
         <Button buttonType="inverted">Pay Now</Button>
+        {paymentLoading ? <h2>Your payment is being processed</h2> : null}
       </FormContainer>
     </PaymentFormContainer>
   );
