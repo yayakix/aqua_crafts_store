@@ -9,13 +9,19 @@ import { BrowserRouter } from "react-router-dom";
 import { ProductsProvider } from './context/productcontext';
 import { CartProvider } from './context/cartcontext';
 
+import { Elements } from "@stripe/react-stripe-js";
+import { stripePromise } from './stripe/stripe';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <UserProvider>
       <ProductsProvider>
         <CartProvider>
-          <App />
+          <Elements stripe={stripePromise}>
+            <App />
+          </Elements>
         </CartProvider>
       </ProductsProvider>
     </UserProvider>

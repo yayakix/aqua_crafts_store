@@ -30,6 +30,7 @@ function NavBar() {
         </LogoContainer>
 
         <NavLinksContainer>
+          <CartIcon />
           <NavLink to="/shop">SHOP</NavLink>
 
           {currUser ? (
@@ -39,7 +40,6 @@ function NavBar() {
           ) : (
             <NavLink to="/signin">SIGN IN</NavLink>
           )}
-          <CartIcon />
         </NavLinksContainer>
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>

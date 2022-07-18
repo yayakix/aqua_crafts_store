@@ -8,8 +8,8 @@ export const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 25px;
-  position: fixed;
-  top: 0;
+  ${'' /* position: fixed; */}
+  ${'' /* top: 0; */}
   z-index: 9999;
   background-color: white;
 `;
