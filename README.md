@@ -13,13 +13,13 @@
 
 ---
 
-The Aqua Crafts Store is a website that sells items 
+The Aqua Crafts Store is a website that sells anklets, necklaces, bracelets, and more! This is a React app that integrates with firebase, firestore and the stripe api.
 
 ## Deployed Web App
 
 ---
 
-Deployed Website:https://funkyshoes.netlify.app/
+Deployed Website: https://main--aquacrafts-store.netlify.app/
 
 ![alt text](./src/image/header.png)
 
@@ -39,7 +39,7 @@ As a small business owner I want an online store where I can sell my handmade pr
 
 ---
 
-Navigate throughout the page. Add items to the cart by clicking on the "ADD TO CART" button. If you no longer wish to purchase the items you had selected, simply click on the cart button from the header and click the trash can logo.
+Navigate throughout the page. Add desired items to the cart. Click the shopping bag to view items in cart and go to checkout. In checkout, adjust quantity of items and pay with credit card at the bottom of the page. 
 
 ## Technologies
 
