@@ -21,13 +21,11 @@ The Aqua Crafts Store is a website that sells anklets, necklaces, bracelets, and
 
 Deployed Website: https://main--aquacrafts-store.netlify.app/
 
-![alt text](./src/image/header.png)
+![checkout page](imgs/checkoutpage.png)
 
-![alt text](./src/image/body.png)
+![home page](imgs/directory.png)
 
-![alt text](./src/image/create.png)
 
-![alt text](./src/image/modal.png)
 
 ## User Story
 
