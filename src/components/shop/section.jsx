@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { ProductsContext } from "../../context/productcontext";
 import ProductCard from "./productcard";
 import '../../css/section.styles.scss'
+import { Link } from "react-router-dom";
 
 const Section = () => {
 const { category } = useParams();
@@ -17,6 +18,9 @@ useEffect(() => {
 
 return (
   <>
+    <Link className="title" to="/shop">
+      Go Back
+    </Link>
     <h2 className="title">{category.toUpperCase()}</h2>
     <div className="category-container">
       {product &&

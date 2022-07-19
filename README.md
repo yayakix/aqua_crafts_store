@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# **Aqua Crafts Store**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Description](#description)
+- [Deployed Web App](#deployed-web-app)
+- [User Story](#user-story)
+- [Getting Started](#getting-started)
+- [Technologies](#technologies)
+- [Future Improvements](#future-improvements)
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The Aqua Crafts Store is a website that sells items 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Deployed Web App
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Deployed Website:https://funkyshoes.netlify.app/
 
-### `npm run build`
+![alt text](./src/image/header.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![alt text](./src/image/body.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![alt text](./src/image/create.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![alt text](./src/image/modal.png)
 
-### `npm run eject`
+## User Story
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+As a small business owner I want an online store where I can sell my handmade products. I want customers to be able to browse through my selection of items and securely send payments.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Getting Started
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+Navigate throughout the page. Add items to the cart by clicking on the "ADD TO CART" button. If you no longer wish to purchase the items you had selected, simply click on the cart button from the header and click the trash can logo.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Technologies
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+- React
+- Node.js
+- Firebase
+- FireStore
+- Stripe
+- Sass
+- Styled components
+- CSS
+- Google Fonts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Future Improvements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+For future improvements I will include...
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Add a contact method 
+- Create confirmation emails that send to customer and owner
+- Add show pages for each item
+- Add input sections for customizable items
+- Add a searchbar
+- Add setting options for users accounts
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

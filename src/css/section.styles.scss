@@ -8,4 +8,8 @@
 .title{
     font-size: 35px;
     margin-bottom: 25px;
+        &:hover {
+    text-decoration: underline;
+  }
 }
+

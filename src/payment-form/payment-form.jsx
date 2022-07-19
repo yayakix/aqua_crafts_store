@@ -8,7 +8,8 @@ import { UserContext } from "../context/usercontex";
 import { useContext } from "react";
 
 const PaymentForm = () => {
-  const { cartTotal } = useContext(CartContext);
+  const { cartTotal, cartItems } = useContext(CartContext);
+  console.log(cartItems)
   const [amount, setAmount] = useState(cartTotal);
 
   useEffect(() => {
@@ -55,7 +56,7 @@ const PaymentForm = () => {
     setPaymentLoading(false);
 
     if (paymentResult.error) {
-      alert(paymentResult.error);
+      alert("error" + paymentResult.error);
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
         alert("Payment successful");
