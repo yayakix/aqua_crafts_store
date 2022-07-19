@@ -8,8 +8,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   
   font-family: 'Roboto Mono', monospace;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   position: relative;
+
 }
 *{
 box-sizing: border-box;
@@ -44,6 +45,12 @@ a{
 .carticon{
   width: 10px;
 }
-.App{
- 
+
+.shippinginfo{
+  height: 200px;
+  padding: 0;
+}
+.addressbox{
+  height: 50px;
+  width: 400px;
 }

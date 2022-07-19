@@ -9,7 +9,8 @@ import { useContext } from "react";
 
 const PaymentForm = () => {
   const { cartTotal, cartItems } = useContext(CartContext);
-  console.log(cartItems)
+  const [stringCartItems, setstringCartItems] = useState(cartItems);
+  // console.log(cartItems)
   const [amount, setAmount] = useState(cartTotal);
 
   useEffect(() => {
@@ -17,13 +18,31 @@ const PaymentForm = () => {
   }, [cartTotal]);
 
   const { currUser } = useContext(UserContext);
-//   console.log(currUser);
+  //   console.log(currUser);
 
   const [paymentLoading, setPaymentLoading] = useState(false);
 
   const stripe = useStripe();
   const elements = useElements();
 
+  useEffect(() => {
+    setstringCartItems(JSON.stringify(cartItems));
+    //  console.log("cart items" + stringCartItems);
+  }, [cartItems]);
+
+  // handle form input
+  const [useraddress, setAddress] = useState("");
+
+  
+
+  const handleChange = (e) => {
+    setAddress(e.target.value);
+  
+  };
+
+
+
+  
   const paymentHandler = async (e) => {
     e.preventDefault();
 
@@ -32,12 +51,17 @@ const PaymentForm = () => {
     }
     setPaymentLoading(true);
 
+    const reply = {
+      amount: amount * 100,
+      description: stringCartItems,
+    };
+
     const response = await fetch("/.netlify/functions/create-payment-intent", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ amount: amount * 100 }),
+      body: JSON.stringify(reply),
     }).then((res) => res.json());
 
     const clientSecret = response.paymentIntent.client_secret;
@@ -49,9 +73,13 @@ const PaymentForm = () => {
         billing_details: {
           name: currUser ? currUser.displayName : "guest",
           email: currUser ? currUser.email : "guest",
+          address: {
+            line1: useraddress
+          }
         },
       },
     });
+    console.log(paymentResult);
 
     setPaymentLoading(false);
 
@@ -60,13 +88,28 @@ const PaymentForm = () => {
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
         alert("Payment successful");
+
       }
     }
   };
   return (
     <PaymentFormContainer>
       <FormContainer onSubmit={paymentHandler}>
+        <div className="shippinginfo">
+          <h2> Shipping address </h2>
+          <hr />
+          <input
+            type="text"
+            value={useraddress}
+            placeholder="shipping address"
+            onChange={handleChange}
+            required 
+            className="addressbox"
+          />
+        </div>
+
         <h2> Credit Card Payment</h2>
+        <hr />
         <CardElement className="paymentcardelement" />
 
         <Button buttonType="inverted">Pay Now</Button>
