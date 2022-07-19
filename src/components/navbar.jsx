@@ -30,7 +30,7 @@ function NavBar() {
         </LogoContainer>
 
         <NavLinksContainer>
-          <CartIcon />
+          <CartIcon  className='carticon'/>
           <NavLink to="/shop">SHOP</NavLink>
 
           {currUser ? (

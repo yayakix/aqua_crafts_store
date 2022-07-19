@@ -16,12 +16,9 @@ const PaymentForm = () => {
   }, [cartTotal]);
 
   const { currUser } = useContext(UserContext);
-  console.log(currUser)
+//   console.log(currUser);
 
   const [paymentLoading, setPaymentLoading] = useState(false);
-  
-
-
 
   const stripe = useStripe();
   const elements = useElements();
@@ -32,7 +29,7 @@ const PaymentForm = () => {
     if (!stripe || !elements) {
       return;
     }
-    setPaymentLoading(true)
+    setPaymentLoading(true);
 
     const response = await fetch("/.netlify/functions/create-payment-intent", {
       method: "post",
@@ -43,18 +40,19 @@ const PaymentForm = () => {
     }).then((res) => res.json());
 
     const clientSecret = response.paymentIntent.client_secret;
-    console.log(clientSecret);
+    // console.log(clientSecret);
 
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: currUser? currUser.displayName : 'guest'
+          name: currUser ? currUser.displayName : "guest",
+          email: currUser ? currUser.email : "guest",
         },
       },
     });
 
-    setPaymentLoading(false)
+    setPaymentLoading(false);
 
     if (paymentResult.error) {
       alert(paymentResult.error);

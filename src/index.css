@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
+  font-family: 'Roboto Mono', monospace;
 }
 *{
 box-sizing: border-box;
@@ -31,4 +32,13 @@ a{
 
 .paymentcardelement{
   padding: 30px;
+}
+.websitetitle{
+  text-align: center;
+  font-family: 'Cookie', sans-serif;
+  font-size: 50px;
+}
+
+.carticon{
+  width: 10px;
 }

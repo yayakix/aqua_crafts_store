@@ -30,6 +30,15 @@ return (
     </span>
 
     <span className="price">{price}</span>
+    <span className="price">
+     
+      <select name="size" id="size" className='options'>
+        <option value="small">S</option>
+        <option value="M">M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select>
+    </span>
     <div className="remove-button" onClick={handleClearItem}>
       &#10005;
     </div>

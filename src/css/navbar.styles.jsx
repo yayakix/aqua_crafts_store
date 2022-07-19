@@ -30,5 +30,10 @@ justify-content: flex-end;
 export const NavLink = styled(Link)`
   padding: 10px 15px;
   cursor: pointer;
+  font-size: 20px;
+  &:hover {
+    text-decoration: underline;
+    color: blue;
+  }
 `;
 

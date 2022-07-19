@@ -3,10 +3,15 @@ import CategoryCard from "../categoryitem";
 
 function Directory() {
   return (
-    <div className="directory-container">
-      {category.map((x) => (
-        <CategoryCard key={x.id} imageUrl={x.imageUrl} title={x.title} />
-      ))}
+    <div>
+    <h1 className="websitetitle">
+      Amazon Queens Unlimited Art
+    </h1>
+      <div className="directory-container">
+        {category.map((x) => (
+          <CategoryCard key={x.id} imageUrl={x.imageUrl} title={x.title} />
+        ))}
+      </div>
     </div>
   );
 }
