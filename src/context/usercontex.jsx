@@ -5,24 +5,24 @@ import {
 } from "../firebase/firebase";
 // context
 export const UserContext = createContext({
-  setCurrUser: () => null,
   currUser: null,
+  setCurrUser: () => null,
 });
 // provider
-export const UserProvider = ({children}) => {
-    const [currUser, setCurrUser] = useState(null);
-    const value = {currUser, setCurrUser};
+export const UserProvider = ({ children }) => {
+  const [currUser, setCurrUser] = useState(null);
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChangedListener((user) => {
-            // console.log(user)
-            if(user){
-                createUserDocument(user)
-            }
-            setCurrUser(user)
-        })
-            return unsubscribe;
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener((user) => {
+      if (user) {
+        createUserDocument(user);
+        setCurrUser(user);
+      }
+    });
+    return unsubscribe;
+  }, []);
+  console.log("cuurruser", currUser);
 
-    }, [])
-    return <UserContext.Provider value={value}>{children}</UserContext.Provider>
-}
+  const value = { currUser, setCurrUser };
+  return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
+};
