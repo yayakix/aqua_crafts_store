@@ -1,124 +1,72 @@
+import React, { useState } from "react";
 import {
-  PaymentElement,
   useStripe,
   useElements,
-  Elements,
+  PaymentElement,
+  CardElement,
 } from "@stripe/react-stripe-js";
-import Button from "../components/button";
-import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
+import "./paymentform.css";
 
-import { useEffect, useState } from "react";
-import { CartContext } from "../context/cartcontext";
-import { UserContext } from "../context/usercontex";
-import { useContext } from "react";
-
+const publishableKey = process.env.REACT_APP_API_STRIPE_PUBLIC_KEY;
 const PaymentForm = () => {
-  const { cartTotal, cartItems } = useContext(CartContext);
-  const [stringCartItems, setstringCartItems] = useState(cartItems);
-  // console.log(cartItems)
-  const [amount, setAmount] = useState(cartTotal);
-
-  useEffect(() => {
-    setAmount(cartTotal);
-  }, [cartTotal]);
-
-  const { currUser } = useContext(UserContext);
-  //   console.log(currUser);
-
-  const [paymentLoading, setPaymentLoading] = useState(false);
-
   const stripe = useStripe();
   const elements = useElements();
 
-  useEffect(() => {
-    setstringCartItems(JSON.stringify(cartItems));
-    //  console.log("cart items" + stringCartItems);
-  }, [cartItems]);
-
-  // handle form input
-  const [useraddress, setAddress] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    address: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
 
   const handleChange = (e) => {
-    setAddress(e.target.value);
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const paymentHandler = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
-    setPaymentLoading(true);
-
-    const reply = {
-      amount: amount * 100,
-      description: stringCartItems,
-    };
-
-    const response = await fetch("/.netlify/functions/create-payment-intent", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reply),
-    }).then((res) => res.json());
-
-    const clientSecret = response.paymentIntent.client_secret;
-    // console.log(clientSecret);
-
-    const paymentResult = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(PaymentElement),
-        billing_details: {
-          name: currUser ? currUser.displayName : "guest",
-          email: currUser ? currUser.email : "guest",
-          address: {
-            line1: useraddress,
-          },
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [
+        {
+          price: "price_1O655vCJ5eZRf2eC65555555",
+          quantity: 1,
         },
-      },
+      ],
+      mode: "payment",
+      successUrl: `${window.location.origin}/success`,
+      cancelUrl: `${window.location.origin}/cancel`,
+      customerEmail: formData.email,
     });
-    console.log(paymentResult);
 
-    setPaymentLoading(false);
-
-    if (paymentResult.error) {
-      alert("error" + paymentResult.error);
-    } else {
-      if (paymentResult.paymentIntent.status === "succeeded") {
-        alert("Payment successful");
-      }
+    if (error) {
+      console.error("Error:", error);
     }
   };
-  // return (
-  //   <Elements stripe={stripePromise}>
-  //     <PaymentFormContainer />
-  //   </Elements>
-  // );
+
   return (
-    <PaymentFormContainer>
-      <FormContainer onSubmit={paymentHandler}>
-        <div className="shippinginfo">
-          <h2> Shipping address </h2>
-          <hr />
-          <input
-            type="text"
-            value={useraddress}
-            placeholder="shipping address"
-            onChange={handleChange}
-            required
-            className="addressbox"
-          />
-        </div>
-
-        <h2 className="payment-title"> Credit Card Payment</h2>
-        <hr />
-        <PaymentElement options={{ layout: "tabs" }} />
-
-        <Button buttonType="inverted">Pay Now</Button>
-        {paymentLoading ? <h2>Your payment is being processed</h2> : null}
-      </FormContainer>
-    </PaymentFormContainer>
+    <div className="paymentform">
+      <h2>Payment</h2>
+      <hr />
+      <CardElement />
+      <button type="submit" disabled={!stripe}>
+        {/* https://buy.stripe.com/test_6oEcPk0oLb0K4YU000 */}
+        Pay with Stripe Link
+      </button>
+      <stripe-buy-button
+        buy-button-id="test_6oEcPk0oLb0K4YU000"
+        publishable-key={publishableKey}
+      ></stripe-buy-button>
+    </div>
   );
 };
 
