@@ -5,6 +5,10 @@
   height: 350px;
   align-items: center;
   position: relative;
+  margin-bottom: 10px;
+  @media (max-width: 938px) {
+    margin-bottom: 40px;
+  }
 
   img {
     width: 100%;

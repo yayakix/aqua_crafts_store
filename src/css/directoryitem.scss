@@ -1,6 +1,9 @@
 .directory-item-container {
   min-width: 30%;
   height: 280px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
   flex: 1 1 auto;
   display: flex;
   align-items: center;
@@ -67,6 +70,6 @@
   }
 }
 
-.directorytitles{
-    text-align: center;
+.directorytitles {
+  text-align: center;
 }
