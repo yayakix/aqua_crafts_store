@@ -1,4 +1,9 @@
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {
+  PaymentElement,
+  useStripe,
+  useElements,
+  Elements,
+} from "@stripe/react-stripe-js";
 import Button from "../components/button";
 import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
 
@@ -33,16 +38,10 @@ const PaymentForm = () => {
   // handle form input
   const [useraddress, setAddress] = useState("");
 
-  
-
   const handleChange = (e) => {
     setAddress(e.target.value);
-  
   };
 
-
-
-  
   const paymentHandler = async (e) => {
     e.preventDefault();
 
@@ -69,13 +68,13 @@ const PaymentForm = () => {
 
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: elements.getElement(PaymentElement),
         billing_details: {
           name: currUser ? currUser.displayName : "guest",
           email: currUser ? currUser.email : "guest",
           address: {
-            line1: useraddress
-          }
+            line1: useraddress,
+          },
         },
       },
     });
@@ -88,10 +87,14 @@ const PaymentForm = () => {
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
         alert("Payment successful");
-
       }
     }
   };
+  // return (
+  //   <Elements stripe={stripePromise}>
+  //     <PaymentFormContainer />
+  //   </Elements>
+  // );
   return (
     <PaymentFormContainer>
       <FormContainer onSubmit={paymentHandler}>
@@ -103,14 +106,14 @@ const PaymentForm = () => {
             value={useraddress}
             placeholder="shipping address"
             onChange={handleChange}
-            required 
+            required
             className="addressbox"
           />
         </div>
 
-        <h2> Credit Card Payment</h2>
+        <h2 className="payment-title"> Credit Card Payment</h2>
         <hr />
-        <CardElement className="paymentcardelement" />
+        <PaymentElement options={{ layout: "tabs" }} />
 
         <Button buttonType="inverted">Pay Now</Button>
         {paymentLoading ? <h2>Your payment is being processed</h2> : null}

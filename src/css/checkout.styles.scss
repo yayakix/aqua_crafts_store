@@ -9,6 +9,7 @@
   @media screen and (max-width: 768px) {
     width: 100%; // Adjust max-width for mobile screens
   }
+  font-family: "Open Sans", sans-serif;
 
   .checkout-header {
     width: 100%;
@@ -31,5 +32,8 @@
     margin-top: 30px;
     margin-left: auto;
     font-size: 36px;
+    @media screen and (max-width: 800px) {
+      font-size: 20px;
+    }
   }
 }
