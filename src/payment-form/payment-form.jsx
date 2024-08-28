@@ -55,15 +55,10 @@ const PaymentForm = () => {
 
   return (
     <div className="paymentform">
-      <h2>Payment</h2>
+      <h2> Pay with Stripe </h2>
       <hr />
-      <CardElement />
-      <button type="submit" disabled={!stripe}>
-        {/* https://buy.stripe.com/test_6oEcPk0oLb0K4YU000 */}
-        Pay with Stripe Link
-      </button>
       <stripe-buy-button
-        buy-button-id="test_6oEcPk0oLb0K4YU000"
+        buy-button-id="buy_btn_1PsoSnCqCjfV1TUoFfsMLuzI"
         publishable-key={publishableKey}
       ></stripe-buy-button>
     </div>
