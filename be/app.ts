@@ -11,16 +11,15 @@ app.use(cors());
 app.use(express.json());
 
 // Basic route
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.json({ message: "Welcome to the API" });
 });
-const YOUR_DOMAIN = "http://localhost:3000";
+const YOUR_DOMAIN = process.env.FE_URL;
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 app.post("/create-checkout-session", async (req, res) => {
   const { amount } = req.body;
-  console.log("amount", amount);
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     line_items: [
@@ -28,7 +27,7 @@ app.post("/create-checkout-session", async (req, res) => {
         price_data: {
           currency: "usd",
           product_data: {
-            name: "Dynamic Product", // Name of the product (you can make it dynamic)
+            name: "Dynamic Product", // Name of the product
           },
           unit_amount: amount * 100, // Amount in cents (e.g., $10 is 1000 cents)
         },
@@ -39,7 +38,6 @@ app.post("/create-checkout-session", async (req, res) => {
     success_url: `${YOUR_DOMAIN}/success`, // Redirect URL on success
     cancel_url: `${YOUR_DOMAIN}/cancel`,
   });
-  console.log("here");
   res.json(session);
 });
 
