@@ -1,5 +1,5 @@
 .checkout-container {
-  width: 55%;
+  // width: 55%;
 
   min-height: 90vh;
   display: flex;
@@ -36,4 +36,10 @@
       font-size: 20px;
     }
   }
+}
+
+.payment-container {
+  width: 100%;
+  max-width: 800px; // Adjust this value to your needs
+  margin: 30px auto 0;
 }

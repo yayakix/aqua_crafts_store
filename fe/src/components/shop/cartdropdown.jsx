@@ -1,25 +1,26 @@
-import {CartDropContainer, CartItems, EmptyMessage} from "../../css/dropdown.styles.jsx";
-import Button from "../button";
-import CartItem from "./cart-item";
+import {
+  CartDropContainer,
+  CartItems,
+  EmptyMessage,
+} from "../../css/dropdown.styles.jsx";
+import Button from "../button.jsx";
+import CartItem from "./cart-item.jsx";
 import { useContext } from "react";
-import { CartContext } from "../../context/cartcontext";
+import { CartContext } from "../../context/cartcontext.jsx";
 import { useNavigate } from "react-router-dom";
 
 const CartDropdown = () => {
   const { cartItems, setIsCartOpen, isCartOpen } = useContext(CartContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
-
-  const goToCheckoutFunc = () =>{
+  const goToCheckoutFunc = () => {
     setIsCartOpen(!isCartOpen);
-    navigate('/checkout')
-  }
-
+    navigate("/checkout");
+  };
 
   return (
     <CartDropContainer>
-      <CartItems >
+      <CartItems>
         {cartItems.length ? (
           cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
         ) : (

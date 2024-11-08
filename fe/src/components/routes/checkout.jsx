@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cartcontext";
 import CheckoutItem from "../shop/checkout-item";
 import { useState, useEffect } from "react";
+import StripeWrapper from "../stripe-wrapper";
 
 import PaymentForm from "../../payment-form/payment-form";
 
@@ -55,7 +56,11 @@ const Checkout = () => {
         return <CheckoutItem key={cartItem.id} cartItem={cartItem} />;
       })}
       <span className="total">Total: ${cartTotal}</span>
-      <PaymentForm />
+      <div className="payment-container">
+        <StripeWrapper>
+          <PaymentForm />
+        </StripeWrapper>
+      </div>
     </div>
   );
 };

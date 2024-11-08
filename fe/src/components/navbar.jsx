@@ -10,12 +10,12 @@ import {
   NavLink,
 } from "../css/navbar.styles.jsx";
 
-import { UserContext } from "../context/usercontex";
-import { CartContext } from "../context/cartcontext";
+import { UserContext } from "../context/usercontex.jsx";
+import { CartContext } from "../context/cartcontext.jsx";
 
-import { signOutUser } from "../firebase/firebase";
-import CartIcon from "./shop/cart-icon";
-import CartDropdown from "./shop/cartdropdown";
+import { signOutUser } from "../firebase/firebase.js";
+import CartIcon from "./shop/cart-icon.jsx";
+import CartDropdown from "./shop/cartdropdown.jsx";
 
 function NavBar() {
   const { currUser, setCurrUser } = useContext(UserContext);

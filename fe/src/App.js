@@ -5,7 +5,8 @@ import NavBar from "./components/navbar";
 import Signin from "./components/routes/signin";
 import Shop from "./components/shop/shop";
 import Checkout from "./components/routes/checkout";
-
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/routes/protectedRoute";
 
@@ -27,6 +28,8 @@ function App() {
             }
           />
         </Route>
+        <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
     </div>
   );
